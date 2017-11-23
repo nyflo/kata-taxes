@@ -2,6 +2,7 @@ package org.nyflo.kata.taxes;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.stream.Collectors;
 
 public class TaxesComputer {
 
@@ -10,17 +11,17 @@ public class TaxesComputer {
 
         Cart cart = InputReader.read(inputFile);
 
-        Bill bill = compute(cart);
+        Bill bill = computeBill(cart);
 
-        OutputWriter.write(outputFile(inputFile), bill);
+        OutputWriter.write(outputFile(inputFile, cart), bill);
     }
 
-    private static Bill compute(Cart cart) {
-        return null;
+    private static Bill computeBill(Cart cart) {
+        return Bill.of(cart.getId(), cart.getOrders());
     }
 
-    private static Path outputFile(Path inputFile) {
-        return null;
+    private static Path outputFile(Path inputFile, Cart cart) {
+        return inputFile.getParent().resolve("output-%s.txt".format(String.valueOf(cart.getId())));
     }
 
 }

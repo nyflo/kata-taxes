@@ -6,14 +6,14 @@ public class Cart {
 
 
     private final int id;
-    private final List<Product> products;
+    private final List<Order> products;
 
-    public Cart(int id, List<Product> products) {
+    public Cart(int id, List<Order> products) {
         this.id = id;
         this.products = products;
     }
 
-    public static Cart of(int cartId, List<Product> products) {
+    public static Cart of(int cartId, List<Order> products) {
         return new Cart(cartId, products);
     }
 
@@ -29,7 +29,7 @@ public class Cart {
         return id;
     }
 
-    public List<Product> getProducts() {
+    public List<Order> getOrders() {
         return products;
     }
 

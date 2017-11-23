@@ -1,6 +1,7 @@
 package org.nyflo.kata.taxes;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -15,7 +16,6 @@ public class InputReader {
 
     public static Cart read(Path inputFile) {
 
-        List<String> lines;
         try {
             return parseCart(Files.readAllLines(inputFile));
         } catch (IOException e) {
@@ -26,12 +26,12 @@ public class InputReader {
     public static Cart parseCart(List<String> lines) {
         int cartId = parseHeader(lines.get(0));
 
-        List<Product> products = lines.stream().skip(1)
+        List<Order> orders = lines.stream().skip(1)
                 .filter(l -> !l.trim().isEmpty())
-                .map(InputReader::parseProduct)
+                .map(InputReader::parseOrder)
                 .collect(Collectors.toList());
 
-        return Cart.of(cartId, products);
+        return Cart.of(cartId, orders);
     }
 
     public static int parseHeader(String headerLine) {
@@ -43,7 +43,7 @@ public class InputReader {
         return cartId;
     }
 
-    public static Product parseProduct(String line) {
+    public static Order parseOrder(String line) {
 
         Matcher matcher = productRegex.matcher(line);
         if (!matcher.matches())
@@ -51,7 +51,7 @@ public class InputReader {
 
         int quantity = Integer.parseInt(matcher.group(1));
         String label = matcher.group(2);
-        double price = Double.parseDouble(matcher.group(3));
-        return Product.of(quantity, label, price);
+        BigDecimal price = new BigDecimal(matcher.group(3));
+        return Order.of(quantity, label, price);
     }
 }

@@ -7,7 +7,7 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.nyflo.kata.taxes.InputReader.parseCart;
 import static org.nyflo.kata.taxes.InputReader.parseHeader;
-import static org.nyflo.kata.taxes.InputReader.parseProduct;
+import static org.nyflo.kata.taxes.InputReader.parseOrder;
 
 public class InputReaderTest {
 
@@ -22,7 +22,7 @@ public class InputReaderTest {
                 )
         );
         assertThat(cart.getId()).isEqualTo(1);
-        assertThat(cart.getProducts().size()).isEqualTo(3);
+        assertThat(cart.getOrders().size()).isEqualTo(3);
     }
 
     @Test
@@ -35,10 +35,10 @@ public class InputReaderTest {
     @Test
     public void shouldParseProductLine() {
         String line = "* 1 livre à 12.49";
-        Product product = parseProduct(line);
+        Order product = parseOrder(line);
         assertThat(product.getQuantity()).isEqualTo(1);
         assertThat(product.getProductLabel()).isEqualTo("livre");
-        assertThat(product.getPriceTtc()).isEqualTo(12.49);
+        assertThat(product.getUnitaryPriceWithoutTax().doubleValue()).isEqualTo(12.49);
     }
 
 }
