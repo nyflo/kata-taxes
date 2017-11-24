@@ -3,7 +3,9 @@ package org.nyflo.kata.taxes;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputWriter {
 
@@ -17,8 +19,17 @@ public class OutputWriter {
     }
 
     private static List<String> toLines(Bill bill) {
+        List<String> lines = new ArrayList<>();
+        lines.add("#### Output " + bill.getCartId());
+        lines.add("");
+        lines.addAll(
+                bill.getOrders().stream().map(
+                        o -> o.getQuantity() + " " + o.getProductLabel() + " : " + o.getPriceWithTax()
+                ).collect(Collectors.toList())
+        );
+        lines.add("Montant des taxes : " + bill.getTaxes());
+        lines.add("Total : " + bill.getTotalPrice());
 
-
-        return null;
+        return lines;
     }
 }

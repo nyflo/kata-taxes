@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public class InputReader {
 
     private static final Pattern headerRegex = Pattern.compile("^#### Input (\\d+)$");
-    private static final Pattern productRegex = Pattern.compile("^\\* (\\d+) ([\\w|\\s]+) à (\\d+.\\d+)$");
+    private static final Pattern productRegex = Pattern.compile("^\\* (\\d+) (.+) à (\\d+.\\d+)$");
 
     public static Cart read(Path inputFile) {
 

@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 public class TaxesComputer {
 
     public static void main(String[] args) {
+
         Path inputFile = Paths.get(args[0]);
 
         Cart cart = InputReader.read(inputFile);
@@ -20,7 +21,10 @@ public class TaxesComputer {
     }
 
     private static Path outputFile(Path inputFile, Cart cart) {
-        return inputFile.getParent().resolve("output-%s.txt".format(String.valueOf(cart.getId())));
+        return inputFile.toAbsolutePath().getParent()
+                .resolve(
+                        "output-"+ cart.getId() + ".txt"
+                );
     }
 
 }

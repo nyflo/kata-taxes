@@ -39,11 +39,19 @@ public class Bill {
                 '}';
     }
 
+    public int getCartId() {
+        return cartId;
+    }
+
     public BigDecimal getTaxes() {
         return taxes;
     }
 
     public BigDecimal getTotalPrice() {
         return totalPrice;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
     }
 }

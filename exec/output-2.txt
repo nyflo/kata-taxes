@@ -1,0 +1,6 @@
+#### Output 2
+
+1 boîte de chocolats importée : 10.50
+1 flacon de parfum importé : 54.65
+Montant des taxes : 7.65
+Total : 65.15
