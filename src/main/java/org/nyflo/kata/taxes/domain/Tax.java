@@ -1,4 +1,4 @@
-package org.nyflo.kata.taxes;
+package org.nyflo.kata.taxes.domain;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

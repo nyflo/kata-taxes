@@ -1,4 +1,7 @@
-package org.nyflo.kata.taxes;
+package org.nyflo.kata.taxes.infrastructure;
+
+import org.nyflo.kata.taxes.domain.Cart;
+import org.nyflo.kata.taxes.domain.Order;
 
 import java.io.IOException;
 import java.math.BigDecimal;

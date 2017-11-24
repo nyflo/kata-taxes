@@ -1,4 +1,6 @@
-package org.nyflo.kata.taxes;
+package org.nyflo.kata.taxes.infrastructure;
+
+import org.nyflo.kata.taxes.domain.Bill;
 
 import java.io.IOException;
 import java.nio.file.Files;

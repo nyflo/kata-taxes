@@ -1,5 +1,10 @@
 package org.nyflo.kata.taxes;
 
+import org.nyflo.kata.taxes.domain.Bill;
+import org.nyflo.kata.taxes.domain.Cart;
+import org.nyflo.kata.taxes.infrastructure.InputReader;
+import org.nyflo.kata.taxes.infrastructure.OutputWriter;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 

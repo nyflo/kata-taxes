@@ -1,13 +1,15 @@
-package org.nyflo.kata.taxes;
+package org.nyflo.kata.taxes.infrastructure;
 
 import org.junit.Test;
+import org.nyflo.kata.taxes.domain.Cart;
+import org.nyflo.kata.taxes.domain.Order;
 
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.nyflo.kata.taxes.InputReader.parseCart;
-import static org.nyflo.kata.taxes.InputReader.parseHeader;
-import static org.nyflo.kata.taxes.InputReader.parseOrder;
+import static org.nyflo.kata.taxes.infrastructure.InputReader.parseCart;
+import static org.nyflo.kata.taxes.infrastructure.InputReader.parseHeader;
+import static org.nyflo.kata.taxes.infrastructure.InputReader.parseOrder;
 
 public class InputReaderTest {
 

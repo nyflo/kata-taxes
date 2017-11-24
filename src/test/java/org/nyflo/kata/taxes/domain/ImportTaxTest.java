@@ -1,6 +1,7 @@
-package org.nyflo.kata.taxes;
+package org.nyflo.kata.taxes.domain;
 
 import org.junit.Test;
+import org.nyflo.kata.taxes.domain.ImportTax;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.nyflo.kata.taxes.Utils.price;

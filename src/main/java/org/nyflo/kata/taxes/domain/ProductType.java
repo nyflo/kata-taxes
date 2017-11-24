@@ -1,4 +1,4 @@
-package org.nyflo.kata.taxes;
+package org.nyflo.kata.taxes.domain;
 
 import java.util.Arrays;
 import java.util.List;

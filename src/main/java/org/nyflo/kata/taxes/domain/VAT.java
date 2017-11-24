@@ -1,9 +1,9 @@
-package org.nyflo.kata.taxes;
+package org.nyflo.kata.taxes.domain;
 
 import java.math.BigDecimal;
 import java.util.stream.Stream;
 
-import static org.nyflo.kata.taxes.ProductType.*;
+import static org.nyflo.kata.taxes.domain.ProductType.*;
 
 public class VAT {
 
