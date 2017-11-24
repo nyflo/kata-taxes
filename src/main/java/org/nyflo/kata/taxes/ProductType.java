@@ -8,7 +8,7 @@ public enum ProductType {
     BOOK("livre"),
     FOOD("chocolat"),
     MEDICINE("pilule"),
-    OTHER();
+    OTHER_PRODUCT();
 
     private final List<String> keywords;
 
@@ -19,6 +19,6 @@ public enum ProductType {
     public static ProductType of(String productLabel) {
         return Arrays.stream(values()).filter(
                 e -> e.keywords.stream().anyMatch(k -> productLabel.contains(k))
-        ).findFirst().orElse(OTHER);
+        ).findFirst().orElse(OTHER_PRODUCT);
     }
 }

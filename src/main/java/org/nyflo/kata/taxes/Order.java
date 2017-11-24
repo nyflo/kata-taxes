@@ -20,8 +20,13 @@ public class Order {
 
         this.productType = ProductType.of(productLabel);
 
-        this.taxes = VAT.of(productType, unitaryPriceWithoutTax).multiply(new BigDecimal(quantity));
-        this.priceWithTax = unitaryPriceWithoutTax.multiply(new BigDecimal(quantity)).add(taxes).setScale(2, RoundingMode.DOWN);
+        BigDecimal quantityBD = BigDecimal.valueOf(quantity);
+        this.taxes = quantityBD.multiply(
+                VAT.of(productType, unitaryPriceWithoutTax).add(
+                        ImportTax.of(productLabel, unitaryPriceWithoutTax)
+                )
+        );
+        this.priceWithTax = unitaryPriceWithoutTax.multiply(quantityBD).add(taxes).setScale(2, RoundingMode.DOWN);
     }
 
     public static Order of(int quantity, String productLabel, BigDecimal priceTTC) {

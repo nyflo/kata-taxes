@@ -24,7 +24,7 @@ public class ProductTypeTest {
 
     @Test
     public void shouldDetectOther() {
-        assertThat(ProductType.of("CD musical")).isEqualTo(OTHER);
+        assertThat(ProductType.of("CD musical")).isEqualTo(OTHER_PRODUCT);
     }
 
 }

@@ -1,7 +1,20 @@
 package org.nyflo.kata.taxes;
 
+import java.math.BigDecimal;
+
+import static org.nyflo.kata.taxes.Utils.price;
+
 public class ImportTax {
 
-    public static final double IMPORT_TAX_RATE = 0.05;
+    public static final BigDecimal IMPORT_TAX_RATE = new BigDecimal("0.05");
 
+    public static BigDecimal of(String productLabel, BigDecimal unitaryPriceWithoutTax) {
+
+        if (productLabel.contains("importé"))
+            return Tax.roundUp(
+                    unitaryPriceWithoutTax.multiply(IMPORT_TAX_RATE)
+            );
+
+        return price(BigDecimal.ZERO);
+    }
 }

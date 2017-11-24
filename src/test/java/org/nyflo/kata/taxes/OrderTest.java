@@ -22,7 +22,7 @@ public class OrderTest {
     }
 
     @Test
-    public void pills_should_not_be_taxed() {
+    public void medicines_should_not_be_taxed() {
         shouldNotBeTaxed( "boîte de pilules contre la migraine", price("9.75"));
     }
 
@@ -33,8 +33,15 @@ public class OrderTest {
 
     private static void shouldNotBeTaxed(String product, BigDecimal price) {
         Order order = Order.of(1, product, price);
-        assertThat(order.getTaxes()).isEqualTo(BigDecimal.ZERO);
+        assertThat(order.getTaxes()).isEqualTo(price(BigDecimal.ZERO));
         assertThat(order.getPriceWithTax()).isEqualTo(price);
+    }
+
+    @Test
+    public void imported_products_should_be_taxed_more() {
+        Order order = Order.of(1, "1 CD importé", price("10"));
+        assertThat(order.getTaxes()).isEqualTo(price("1.50"));
+        assertThat(order.getPriceWithTax()).isEqualTo(price("11.50"));
     }
 
 }

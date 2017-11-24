@@ -3,6 +3,8 @@ package org.nyflo.kata.taxes;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static org.nyflo.kata.taxes.Utils.price;
+
 public class Bill {
 
     private final int cartId;
@@ -13,8 +15,14 @@ public class Bill {
     public Bill(int cartId, List<Order> orders) {
         this.cartId = cartId;
         this.orders = orders;
-        this.taxes = orders.stream().map(Order::getTaxes).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
-        this.totalPrice = orders.stream().map(Order::getPriceWithTax).reduce(BigDecimal::add).orElse(BigDecimal.ZERO);
+        this.taxes = price(
+                orders.stream().map(Order::getTaxes).reduce(BigDecimal::add)
+                        .orElse(BigDecimal.ZERO)
+        );
+        this.totalPrice = price(
+                orders.stream().map(Order::getPriceWithTax).reduce(BigDecimal::add)
+                        .orElse(BigDecimal.ZERO)
+        );
     }
 
     public static Bill of(int cartId, List<Order> orders) {

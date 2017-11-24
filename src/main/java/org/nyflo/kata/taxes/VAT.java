@@ -7,7 +7,7 @@ import static org.nyflo.kata.taxes.ProductType.*;
 
 public class VAT {
 
-    public static final BigDecimal VAT_RATE = new BigDecimal(0.10);
+    public static final BigDecimal VAT_RATE = new BigDecimal("0.10");
 
     public static BigDecimal of(ProductType productType, BigDecimal unitaryPriceWithoutTax) {
 
